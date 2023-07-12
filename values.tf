@@ -19,3 +19,13 @@ variable "tags" {
     terraform   = "True"
   }
 }
+
+variable "key_name" {
+  default = "KeyFromLinuxAWS-Frankfurt"
+}
+
+variable "node_count" {
+  description = "Number of nodes to create"
+  type        = number
+  default     = 1
+}

@@ -18,7 +18,7 @@ data "aws_ami" "ubuntu" {
 resource "aws_instance" "this" {
   ami = data.aws_ami.ubuntu.id
 
-  key_name = "KeyFromLinuxAWS-Frankfurt"
+  key_name = var.key_name
 
   vpc_security_group_ids = [aws_security_group.this.id]
 
@@ -40,11 +40,3 @@ resource "aws_instance" "this" {
 
 
 
-output "Master_ip" {
-  value = {
-    name = aws_instance.this.tags["Name"]
-    public_ip = aws_instance.this.public_ip
-    private_ip = aws_instance.this.private_ip
-  }
-  description = "The public and private IP addresses of the instance"
-}
